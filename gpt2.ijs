@@ -59,9 +59,7 @@ generate =: 3 : 0
     logits =. gpt2 inputs ; n_head ; params
     next_id =. (i. >./) logits
     inputs =. inputs , next_id
-    NB. It'd be better to not print a newline after each token, but J apparently
-    NB. doesn't flush the output without one.
-    echo decode__encoder next_id
+    stderr decode__encoder next_id    NB. Use stderr because it's unbuffered
   end.
   (-n_tokens_to_generate) {. inputs
 )

@@ -35,14 +35,15 @@ gen 'Alan Turing theorized that computers would one day become'
 
 NB. Switch model
 model '1558M'
-NB. Generate 79 tokens
-79 gen 'The importance of nomenclature, notation, and language as tools of'
+NB. Generate 79 tokens. Assign the output to a variable to prevent it from
+NB. being printed to the console twice.
+out =. 79 gen 'The importance of nomenclature, notation, and language as tools of'
 ```
 
 ## Notes
 
 - When the input length exceeds `n_ctx`, rather than throwing an exception, only the last `n_ctx` tokens are used.
-- Instead of a progress bar, tokens are printed as they're generated. Each token is printed on a separate line because J apparently doesn't flush stdout unless a newline is printed.
+- Instead of a progress bar, tokens are printed as they're generated.
 - All calculations are done with 64-bit floats since J [doesn't have 32-bit floats](https://code.jsoftware.com/wiki/Vocabulary/NumericPrecisions) (not sure about 32-bit J, though).
 - The [Safetensors format](https://github.com/huggingface/safetensors) is used since it's easier to parse. This means checkpoints are downloaded from HuggingFace rather than OpenAI's Azure storage. Filenames are also different:
     - `model.ckpt.*` -> `model.safetensors`

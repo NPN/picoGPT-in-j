@@ -56,5 +56,5 @@ bpe =: (3 : 0) M.
   word
 )
 
-encode =: {{ ; {{vocab_i bpe cs {~ bs i. a. i. >y}} each pat rxall utf8 y }}
+encode =: {{ ; {{vocab_i bpe cs {~ (bs{a.)&i. y}} each pat rxall utf8 y }}
 decode =: {{ ucp a. {~ bs {~ cs i. ; y { vocab }}
